@@ -14,13 +14,26 @@ function singleRound(playerDecision, computerDecision) {
     computerDecision = computerPlay();
     if ((playerDecision === "rock" && computerDecision === "Scissors") || (playerDecision === "paper" && computerDecision === "Rock") || (playerDecision === "scissors" && computerDecision === "Paper")) {
         winCount++;
-        return "Nice Win!"
+        return "Nice Win!";
     }
     else {
-        return "Too bad! You lost."
+        return "Too bad! You lost.";
     }
 
+}
 
+function game() {
+    console.log(singleRound());
+    console.log(singleRound());
+    console.log(singleRound());
+    console.log(singleRound());
+    console.log(singleRound());
 
+    if (winCount >= 3) {
+        return "Winner: User Loser: Computer"
+    }
+    else {
+        return "Winner: Computer Loser: User"
+    }
 
 }
