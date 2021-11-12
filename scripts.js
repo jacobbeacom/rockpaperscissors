@@ -21,5 +21,5 @@ function singleRound(playerDecision, computerDecision) {
 
 
 
-    console.log(playerDecision, computerDecision);
+
 }
