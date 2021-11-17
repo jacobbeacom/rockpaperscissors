@@ -7,6 +7,16 @@ function computerPlay() {
 }
 
 let winCount = 0;
+let cpuWinCount = 0;
+
+const humanScoreboard = document.querySelector('#humanScoreboard');
+const score = document.createElement('p');
+humanScoreboard.appendChild(score);
+
+const cpuScoreboard = document.querySelector('#cpuScoreboard');
+const playerVictory = document.createElement('p');
+cpuScoreboard.appendChild(playerVictory);
+
 
 
 function singleRound(playerDecision, computerDecision) {
@@ -16,13 +26,20 @@ function singleRound(playerDecision, computerDecision) {
     if ((playerDecision === "rock" && computerDecision === "Scissors") ||
              (playerDecision === "paper" && computerDecision === "Rock") || 
                     (playerDecision === "scissors" && computerDecision === "Paper")) {
-        winCount++;
+                        winCount++
+                        score.textContent = 'Player Score: ' + winCount + ' CPU Score: ' + cpuWinCount;
         return "Nice Win!";
     }
     else {
-        return "Too bad! You lost.";
+        cpuWinCount++
+        score.textContent = 'Player Score: ' + winCount + ' CPU Score: ' + cpuWinCount;
     }
-}
+    if (winCount == 5) {
+        playerVictory.textContent = 'Congratulations, you won!'
+    } else if (cpuWinCount == 5) {
+        playerVictory.textContent = 'Sorry, you lost!'
+    
+}}
 
 
 const rock = document.querySelector('#rock');
@@ -30,7 +47,7 @@ const rock = document.querySelector('#rock');
     rock.addEventListener('click', () => {
     playerDecision = 'rock';
     console.log(playerDecision);
-    console.log(singleRound(playerDecision));
+    (singleRound(playerDecision));
         
 
     });
@@ -41,7 +58,7 @@ const paper = document.querySelector('#paper');
     paper.addEventListener('click', () => {
     playerDecision = 'paper';
     console.log(playerDecision);
-    console.log(singleRound(playerDecision));    
+    (singleRound(playerDecision));    
 
     });
 
@@ -51,10 +68,11 @@ const scissors = document.querySelector('#scissors');
     scissors.addEventListener('click', () => {
     playerDecision = 'scissors';
     console.log(playerDecision);
-    console.log(singleRound(playerDecision));
+    (singleRound(playerDecision));
 
     });
-
+   
+ 
 
 
 //The singleRound function repeated 5 times, with results logged to console
